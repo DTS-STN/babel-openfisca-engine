@@ -16,36 +16,33 @@ class maternity_benefits__entitlement_amount(Variable):
         weekly_value = min(potential_value, persons('maternity_benefits__max_weekly_amount', period))
         return weekly_value * persons('maternity_benefits__num_weeks', period)
 
-## This is for all of EI. Maybe use that parameter under the hood
-class maternity_benefits__max_weekly_amount(Variable):
-    value_type = float
-    entity = Person
-    definition_period = MONTH
-    default_value = 595.00
-
-    def formula(person, period, parameters):
-        ## Will want to get the parameter value
-        return 595
-
-## This is for all of EI. Maybe use that parameter under the hood
-class maternity_benefits__percentage(Variable):
-    value_type = float
-    entity = Person
-    definition_period = MONTH
-    default_value = 55
-
-    def formula(person, period, parameters):
-        ## Will want to get the parameter value
-        return 55
-
 class maternity_benefits__average_income(Variable):
     value_type = float
     entity = Person
     definition_period = MONTH
     default_value = 0
 
+class maternity_benefits__max_weekly_amount(Variable):
+    value_type = float
+    entity = Person
+    definition_period = MONTH
+
+    def formula(person, period, parameters):
+        return parameters(period).maternity_benefits.max_weekly_amount
+
+## This is for all of EI. Maybe use that parameter under the hood
+class maternity_benefits__percentage(Variable):
+    value_type = float
+    entity = Person
+    definition_period = MONTH
+
+    def formula(person, period, parameters):
+        return parameters(period).maternity_benefits.percentage
+
 class maternity_benefits__num_weeks(Variable):
     value_type = float
     entity = Person
     definition_period = MONTH
-    default_value = 0
+
+    def formula(person, period, parameters):
+        return parameters(period).maternity_benefits.number_of_weeks
