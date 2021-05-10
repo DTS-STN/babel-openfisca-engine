@@ -6,7 +6,7 @@
       "person1":
         maternity_benefits__average_income: 500
         maternity_benefits__max_weekly_amount: 99999
-        maternity_benefits__num_weeks: 10
+        maternity_benefits__number_of_weeks: 10
         maternity_benefits__percentage: 50
   output:
     maternity_benefits__entitlement_amount: 2500
@@ -21,5 +21,5 @@
   output:
     maternity_benefits__entitlement_amount: 4125
     maternity_benefits__max_weekly_amount: 595
-    maternity_benefits__num_weeks: 15
+    maternity_benefits__number_of_weeks: 15
     maternity_benefits__percentage: 55

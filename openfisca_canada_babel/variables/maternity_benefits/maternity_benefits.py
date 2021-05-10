@@ -14,7 +14,7 @@ class maternity_benefits__entitlement_amount(Variable):
     def formula(persons, period, parameters):
         potential_value = persons('maternity_benefits__average_income', period) * persons('maternity_benefits__percentage', period) / 100
         weekly_value = min(potential_value, persons('maternity_benefits__max_weekly_amount', period))
-        return weekly_value * persons('maternity_benefits__num_weeks', period)
+        return weekly_value * persons('maternity_benefits__number_of_weeks', period)
 
 class maternity_benefits__average_income(Variable):
     value_type = float
@@ -39,7 +39,7 @@ class maternity_benefits__percentage(Variable):
     def formula(person, period, parameters):
         return parameters(period).maternity_benefits.percentage
 
-class maternity_benefits__num_weeks(Variable):
+class maternity_benefits__number_of_weeks(Variable):
     value_type = float
     entity = Person
     definition_period = MONTH
